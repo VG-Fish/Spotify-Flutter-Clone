@@ -2,7 +2,14 @@ import 'package:client/core/theme/app_pallet.dart';
 import 'package:flutter/material.dart';
 
 class GradientButton extends StatelessWidget {
-  const GradientButton({super.key});
+  final String buttonText;
+  final VoidCallback onTap;
+
+  const GradientButton({
+    super.key,
+    required this.buttonText,
+    required this.onTap,
+  });
 
   @override
   Widget build(BuildContext context) {
@@ -16,14 +23,14 @@ class GradientButton extends StatelessWidget {
         borderRadius: BorderRadius.circular(5),
       ),
       child: ElevatedButton(
-        onPressed: () {},
+        onPressed: onTap,
         style: ElevatedButton.styleFrom(
           fixedSize: Size(MediaQuery.of(context).size.width, 55),
           backgroundColor: Pallet.transparentColor,
           shadowColor: Pallet.transparentColor,
         ),
         child: Text(
-          "Sign Up",
+          buttonText,
           style: TextStyle(fontSize: 17, fontWeight: FontWeight.w600),
         ),
       ),
